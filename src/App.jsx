@@ -5,7 +5,7 @@ import Notification from "./components/Notification/Notification";
 import Options from "./components/Options/Options";
 
 export default function App() {
-  const feedbackEmpty = {
+  const feedbackDefault = {
     good: 0,
     neutral: 0,
     bad: 0,
@@ -13,7 +13,7 @@ export default function App() {
 
   const getFeedbackFromLocalStorage = () => {
     const savedObject = window.localStorage.getItem("feedback");
-    return savedObject !== null ? JSON.parse(savedObject) : feedbackEmpty;
+    return savedObject !== null ? JSON.parse(savedObject) : feedbackDefault;
   };
 
   const [feedback, setFeedback] = useState(() => getFeedbackFromLocalStorage());
@@ -35,7 +35,7 @@ export default function App() {
   }
 
   function resetFeedback() {
-    setFeedback(feedbackEmpty);
+    setFeedback(feedbackDefault);
   }
 
   return (
